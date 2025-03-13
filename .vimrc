@@ -1,4 +1,4 @@
-syntax on
+syntax on 
 set number
 set showcmd
 set tabstop=4
@@ -13,7 +13,6 @@ set hls is
 
 call plug#begin()
 
-Plug 'junegunn/seoul256.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete.vim'
@@ -22,12 +21,7 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 call plug#end()
 
 " Color schemes should be loaded after plug#end().
-" We prepend it with 'silent!' to ignore errors when it's not yet installed.
-" seoul256 (dark):
-"   Range:   233 (darkest) ~ 239 (lightest)
-"   Default: 237
-let g:seoul256_background = 234
-silent! colorscheme seoul256
+colorscheme slate
 
 " LSP Settings
 if executable('pylsp')
@@ -76,8 +70,10 @@ inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 " let g:lsp_semantic_enabled = 1
 
 " logging
-let g:lsp_log_verbose = 1
+let g:lsp_log_verbose = 0
 let g:lsp_log_file = expand('~/vim-lsp.log')
 
 " for asyncomplete.vim log
 let g:asyncomplete_log_file = expand('~/asyncomplete.log')
+" Sign Column Settings (The gutter on the left that displays LSP msgs)
+highlight SignColumn guibg=NONE ctermbg=NONE
